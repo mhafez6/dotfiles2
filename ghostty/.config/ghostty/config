@@ -1,6 +1,6 @@
-theme = Gruvbox Dark
+config-file = /Users/h/.local/share/tinted-theming/tinty/tinted-ghostty-themes-file.conf
 
-background-opacity = 0.65 
+background-opacity = 0.65
 background-blur = true
 
 keybind = opt+backspace=text:\x1b\x7f
