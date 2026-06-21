@@ -1,11 +1,13 @@
 return {
-  text    = "Hack Nerd Font",
-  numbers = "Hack Nerd Font",
+  text = "SF Pro", -- Used for text
+  numbers = "SF Mono", -- Used for numbers
+
+  -- Unified font style map
   style_map = {
-    ["Regular"]  = "Regular",
-    ["Semibold"] = "Regular",
-    ["Bold"]     = "Bold",
-    ["Heavy"]    = "Bold",
-    ["Black"]    = "Bold",
-  },
+    ["Regular"] = "Regular",
+    ["Semibold"] = "Semibold",
+    ["Bold"] = "Bold",
+    ["Heavy"] = "Heavy",
+    ["Black"] = "Black",
+  }
 }

@@ -2,29 +2,105 @@ local settings = require("settings")
 
 local icons = {
   sf_symbols = {
-    apple    = "󰀵",
-    loading  = "󰔟",
-    battery  = { _100 = "󰁹", _75 = "󰂁", _50 = "󰁾", _25 = "󰁼", _0 = "󰁺", charging = "󰂄" },
-    volume   = { _100 = "󰕾", _66 = "󰖀", _33 = "󰕿", _10 = "󰕿", _0 = "󰖁" },
-    devices  = { headphones = "󰋋", airpods = "󰋋" },
-    wifi     = { connected = "󰖩", disconnected = "󰖪" },
-    media    = { back = "󰒮", forward = "󰒭", play_pause = "󰐎", play = "󰐊", pause = "󰏤" },
-    switch   = { on = "󱨥", off = "󱨦" },
+    plus = "􀅼",
+    loading = "􀖇",
+    apple = "􀣺",
+    gear = "􀍟",
+    cpu = "􀫥",
+    clipboard = "􀉄",
+
+    switch = {
+      on = "􁏮",
+      off = "􁏯",
+    },
+    volume = {
+      _100="􀊩",
+      _66="􀊧",
+      _33="􀊥",
+      _10="􀊡",
+      _0="􀊣",
+    },
+    devices = {
+      headphones = "􀑈",
+      airpods = "􀟥",
+    },
+    battery = {
+      _100 = "􀛨",
+      _75 = "􀺸",
+      _50 = "􀺶",
+      _25 = "􀛩",
+      _0 = "􀛪",
+      charging = "􀢋"
+    },
+    wifi = {
+      upload = "􀄨",
+      download = "􀄩",
+      connected = "􀙇",
+      disconnected = "􀙈",
+      router = "􁓤",
+      closed_lock = "􀎡",
+      opened_lock = "􀎥"
+    },
+    media = {
+      back = "􀊊",
+      forward = "􀊌",
+      play_pause = "􀊈",
+      play = "􀊄",
+      pause = "􀊆",
+    },
+    reminders = {
+        icon= "􀓕"
+    }
   },
+
+  -- Alternative NerdFont icons
   nerdfont = {
-    apple    = "",
-    loading  = "",
-    battery  = { _100 = "󰁹", _75 = "󰂁", _50 = "󰁾", _25 = "󰁼", _0 = "󰁺", charging = "󰂄" },
-    volume   = { _100 = "󰕾", _66 = "󰖀", _33 = "󰕿", _10 = "󰕿", _0 = "󰖁" },
-    devices  = { headphones = "󰋋", airpods = "󰋋" },
-    wifi     = { connected = "󰖩", disconnected = "󰖪" },
-    media    = { back = "󰒮", forward = "󰒭", play_pause = "󰐎", play = "󰐊", pause = "󰏤" },
-    switch   = { on = "󱨥", off = "󱨦" },
+    plus = "",
+    loading = "",
+    apple = "",
+    gear = "",
+    cpu = "",
+    clipboard = "Missing Icon",
+
+    switch = {
+      on = "󱨥",
+      off = "󱨦",
+    },
+    volume = {
+      _100="",
+      _66="",
+      _33="",
+      _10="",
+      _0="",
+    },
+    battery = {
+      _100 = "",
+      _75 = "",
+      _50 = "",
+      _25 = "",
+      _0 = "",
+      charging = ""
+    },
+    wifi = {
+      upload = "",
+      download = "",
+      connected = "󰖩",
+      disconnected = "󰖪",
+      router = "Missing Icon"
+    },
+    media = {
+      back = "",
+      forward = "",
+      play_pause = "",
+    },
+    reminders = {
+      icon = "􀓕",
+    },
   },
 }
 
-if settings.icons == "NerdFont" then
-  return icons.nerdfont
-else
+if not (settings.icons == "NerdFont") then
   return icons.sf_symbols
+else
+  return icons.nerdfont
 end
