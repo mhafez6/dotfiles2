@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# ── Gruvbox Dark palette ──────────────────────────────────
+# ── Gruvbox Dark ──────────────────────────────────────────
 BG=0xff282828
 FG=0xffebdbb2
 YELLOW=0xffd79921
 GRAY=0xff928374
-DIM_BG=0x553c3836
+SPACE_INACTIVE=0x33928374   # dim pill for inactive spaces
+SPACE_ACTIVE=0xffd79921     # full yellow pill for active space
+SPACE_ICON_ON=0xff282828    # dark number on yellow pill
+SPACE_ICON_OFF=0xff665c54   # muted number on dim pill
 
 sketchybar \
   --bar \
@@ -14,19 +17,19 @@ sketchybar \
     position=top \
     shadow=off \
     sticky=on \
-    padding_right=16 \
-    padding_left=16 \
+    padding_right=18 \
+    padding_left=18 \
   --default \
     icon.color=$FG \
     label.color=$FG \
-    icon.font="SF Pro:Regular:14.0" \
+    icon.font="SF Pro:Bold:12.0" \
     label.font="SF Pro:Regular:13.0" \
-    padding_left=4 \
-    padding_right=4 \
+    padding_left=3 \
+    padding_right=3 \
     label.padding_left=4 \
     label.padding_right=4 \
-    icon.padding_left=4 \
-    icon.padding_right=4
+    icon.padding_left=7 \
+    icon.padding_right=7
 
 # ── Spaces (left) ────────────────────────────────────────
 for i in $(seq 1 9); do
@@ -34,10 +37,10 @@ for i in $(seq 1 9); do
     --set space.$i \
       associated_space=$i \
       icon=$i \
-      icon.color=$GRAY \
-      icon.highlight_color=$YELLOW \
-      icon.font="SF Pro:Bold:12.0" \
-      background.color=$DIM_BG \
+      icon.color=$SPACE_ICON_OFF \
+      icon.highlight_color=$SPACE_ICON_ON \
+      background.color=$SPACE_INACTIVE \
+      background.highlight_color=$SPACE_ACTIVE \
       background.corner_radius=5 \
       background.height=22 \
       background.drawing=on \
@@ -45,22 +48,33 @@ for i in $(seq 1 9); do
       click_script="yabai -m space --focus $i 2>/dev/null"
 done
 
-# ── AirPods (right, hidden when disconnected) ─────────────
+# ── Right: battery ────────────────────────────────────────
+sketchybar --add item battery right \
+  --set battery \
+    update_freq=60 \
+    icon.drawing=off \
+    label.font="SF Pro:Semibold:12.0" \
+    padding_right=6 \
+    script="$CONFIG_DIR/plugins/battery.sh"
+
+# ── Right: AirPods (hidden when disconnected) ─────────────
 sketchybar --add item airpods right \
   --set airpods \
     update_freq=30 \
     drawing=off \
-    label.color=$FG \
     icon.drawing=off \
+    label.color=$FG \
+    label.font="SF Pro:Regular:12.0" \
     script="$CONFIG_DIR/plugins/airpods.sh"
 
-# ── Clock (right) ────────────────────────────────────────
+# ── Right: clock ──────────────────────────────────────────
 sketchybar --add item clock right \
   --set clock \
     update_freq=30 \
     icon.drawing=off \
     label.color=$YELLOW \
     label.font="SF Pro:Semibold:13.0" \
+    padding_left=8 \
     script="$CONFIG_DIR/plugins/clock.sh"
 
 sketchybar --update
