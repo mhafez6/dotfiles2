@@ -1,0 +1,3 @@
+theme = Gruvbox Dark
+
+keybind = opt+backspace=text:\x1b\x7f
