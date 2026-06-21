@@ -1,33 +1,33 @@
 #!/bin/bash
 
-# ── Gruvbox Dark colors ───────────────────────────────────
-BG=0xff282828
+# ── Gruvbox Dark palette ──────────────────────────────────
+BG=0x99282828
 FG=0xffebdbb2
 YELLOW=0xffd79921
-YELLOW_DIM=0xff3c3836
 GRAY=0xff928374
-ACCENT_BG=0x443c3836
+DIM_BG=0x553c3836
 
-sketchybar --bar \
-  height=36 \
-  color=$BG \
-  position=top \
-  shadow=off \
-  sticky=on \
-  padding_right=14 \
-  padding_left=14
-
-sketchybar --default \
-  icon.color=$FG \
-  label.color=$FG \
-  icon.font="SF Pro:Semibold:14.0" \
-  label.font="SF Pro:Regular:13.0" \
-  padding_left=4 \
-  padding_right=4 \
-  label.padding_left=4 \
-  label.padding_right=4 \
-  icon.padding_left=4 \
-  icon.padding_right=4
+sketchybar \
+  --bar \
+    height=36 \
+    color=$BG \
+    blur_radius=30 \
+    position=top \
+    shadow=off \
+    sticky=on \
+    padding_right=16 \
+    padding_left=16 \
+  --default \
+    icon.color=$FG \
+    label.color=$FG \
+    icon.font="SF Pro:Regular:14.0" \
+    label.font="SF Pro:Regular:13.0" \
+    padding_left=4 \
+    padding_right=4 \
+    label.padding_left=4 \
+    label.padding_right=4 \
+    icon.padding_left=4 \
+    icon.padding_right=4
 
 # ── Spaces (left) ────────────────────────────────────────
 for i in $(seq 1 9); do
@@ -37,13 +37,23 @@ for i in $(seq 1 9); do
       icon=$i \
       icon.color=$GRAY \
       icon.highlight_color=$YELLOW \
-      background.color=$ACCENT_BG \
-      background.corner_radius=4 \
-      background.height=24 \
+      icon.font="SF Pro:Bold:12.0" \
+      background.color=$DIM_BG \
+      background.corner_radius=5 \
+      background.height=22 \
       background.drawing=on \
       label.drawing=off \
       click_script="yabai -m space --focus $i 2>/dev/null"
 done
+
+# ── AirPods (right, hidden when disconnected) ─────────────
+sketchybar --add item airpods right \
+  --set airpods \
+    update_freq=30 \
+    drawing=off \
+    label.color=$FG \
+    icon.drawing=off \
+    script="$CONFIG_DIR/plugins/airpods.sh"
 
 # ── Clock (right) ────────────────────────────────────────
 sketchybar --add item clock right \
