@@ -81,24 +81,31 @@ local icons = {
       _0 = "",
       charging = ""
     },
+    devices = {
+      headphones = "",
+      airpods = "",
+    },
     wifi = {
       upload = "",
       download = "",
       connected = "󰖩",
       disconnected = "󰖪",
-      router = "Missing Icon"
+      router = "󰗨",
+      closed_lock = "",
+      opened_lock = "",
     },
     media = {
       back = "",
       forward = "",
       play_pause = "",
+      play = "",
+      pause = "",
     },
     reminders = {
-      icon = "􀓕",
+      icon = "",
     },
   },
 }
-
 if not (settings.icons == "NerdFont") then
   return icons.sf_symbols
 else
