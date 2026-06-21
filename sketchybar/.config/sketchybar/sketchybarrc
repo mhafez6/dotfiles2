@@ -12,25 +12,20 @@ sketchybar \
     position=top \
     shadow=off \
     sticky=on \
-    padding_right=12 \
-    padding_left=12 \
+    padding_right=16 \
+    padding_left=16 \
   --default \
     icon.color=$SBAR_FG \
     label.color=$SBAR_FG \
     icon.font="$FONT:Regular:14.0" \
     label.font="$FONT:Regular:13.0" \
-    padding_left=4 \
-    padding_right=4 \
-    icon.padding_left=6 \
+    padding_left=5 \
+    padding_right=5 \
+    icon.padding_left=4 \
     icon.padding_right=4 \
     label.padding_left=4 \
-    label.padding_right=6 \
-    background.color=0x00000000 \
-    background.border_color=$SBAR_DIM \
-    background.border_width=1 \
-    background.corner_radius=6 \
-    background.height=26 \
-    background.drawing=on
+    label.padding_right=4 \
+    background.drawing=off
 
 # ── Spaces ────────────────────────────────────────────────
 for i in $(seq 1 9); do
@@ -38,16 +33,9 @@ for i in $(seq 1 9); do
     --set space.$i \
       associated_space=$i \
       icon=$i \
-      icon.font="$FONT:Bold:11.0" \
+      icon.font="$FONT:Bold:12.0" \
       icon.color=$SBAR_DIM \
-      icon.padding_left=8 \
-      icon.padding_right=8 \
       label.drawing=off \
-      background.corner_radius=5 \
-      background.height=24 \
-      background.border_width=1 \
-      background.border_color=$SBAR_DIM \
-      background.color=0x00000000 \
       click_script="yabai -m space --focus $i 2>/dev/null" \
       script="$CONFIG_DIR/plugins/space.sh"
 done
@@ -58,9 +46,7 @@ sketchybar --add item front_app left \
     icon.drawing=off \
     label.font="$FONT:Bold:13.0" \
     label.color=$SBAR_FG \
-    label.padding_left=8 \
-    label.padding_right=8 \
-    padding_left=8 \
+    padding_left=12 \
     script="$CONFIG_DIR/plugins/front_app.sh" \
   --subscribe front_app front_app_switched
 
@@ -68,7 +54,7 @@ sketchybar --add item front_app left \
 sketchybar --add item volume right \
   --set volume \
     icon.font="$FONT:Regular:14.0" \
-    label.font="$FONT:Regular:12.0" \
+    label.font="$FONT:Regular:13.0" \
     script="$CONFIG_DIR/plugins/volume.sh" \
   --subscribe volume volume_change
 
@@ -77,8 +63,7 @@ sketchybar --add item battery right \
   --set battery \
     update_freq=60 \
     icon.font="$FONT:Regular:15.0" \
-    label.font="$FONT:Regular:12.0" \
-    padding_left=6 \
+    label.font="$FONT:Regular:13.0" \
     script="$CONFIG_DIR/plugins/battery.sh"
 
 # ── AirPods ───────────────────────────────────────────────
@@ -87,7 +72,7 @@ sketchybar --add item airpods right \
     update_freq=30 \
     drawing=off \
     icon.font="$FONT:Regular:14.0" \
-    label.font="$FONT:Regular:12.0" \
+    label.font="$FONT:Regular:13.0" \
     icon.color=$SBAR_FG \
     label.color=$SBAR_FG \
     script="$CONFIG_DIR/plugins/airpods.sh"
@@ -99,9 +84,6 @@ sketchybar --add item clock right \
     icon.drawing=off \
     label.color=$SBAR_YELLOW \
     label.font="$FONT:Bold:13.0" \
-    label.padding_left=8 \
-    label.padding_right=8 \
-    padding_left=6 \
     script="$CONFIG_DIR/plugins/clock.sh"
 
 sketchybar --update
