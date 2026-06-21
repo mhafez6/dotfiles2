@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# ── Gruvbox Dark ──────────────────────────────────────────
+# ── Gruvbox Dark — exact palette ─────────────────────────
 BG=0xff282828
-FG=0xffebdbb2
-YELLOW=0xffd79921
-GRAY=0xff928374
-SPACE_INACTIVE=0x33928374   # dim pill for inactive spaces
-SPACE_ACTIVE=0xffd79921     # full yellow pill for active space
-SPACE_ICON_ON=0xff282828    # dark number on yellow pill
-SPACE_ICON_OFF=0xff665c54   # muted number on dim pill
+FG=0xffebdbb2        # cream — primary text
+GRAY=0xff928374      # neutral gray — inactive/dim text
+YELLOW=0xfffabd2f   # bright yellow (less amber than d79921)
+GREEN=0xffb8bb26
+RED=0xfffb4934
+SPACE_DIM=0x22ebdbb2  # very subtle pill for inactive spaces
+
+FONT="Hack Nerd Font"
 
 sketchybar \
   --bar \
@@ -22,8 +23,8 @@ sketchybar \
   --default \
     icon.color=$FG \
     label.color=$FG \
-    icon.font="SF Pro:Bold:12.0" \
-    label.font="SF Pro:Regular:13.0" \
+    icon.font="$FONT:Regular:14.0" \
+    label.font="$FONT:Regular:13.0" \
     padding_left=3 \
     padding_right=3 \
     label.padding_left=4 \
@@ -31,16 +32,17 @@ sketchybar \
     icon.padding_left=7 \
     icon.padding_right=7
 
-# ── Spaces (left) ────────────────────────────────────────
+# ── Spaces ────────────────────────────────────────────────
 for i in $(seq 1 9); do
   sketchybar --add space space.$i left \
     --set space.$i \
       associated_space=$i \
       icon=$i \
-      icon.color=$SPACE_ICON_OFF \
-      icon.highlight_color=$SPACE_ICON_ON \
-      background.color=$SPACE_INACTIVE \
-      background.highlight_color=$SPACE_ACTIVE \
+      icon.font="$FONT:Bold:11.0" \
+      icon.color=$GRAY \
+      icon.highlight_color=0xff282828 \
+      background.color=$SPACE_DIM \
+      background.highlight_color=0xfffabd2f \
       background.corner_radius=5 \
       background.height=22 \
       background.drawing=on \
@@ -48,33 +50,34 @@ for i in $(seq 1 9); do
       click_script="yabai -m space --focus $i 2>/dev/null"
 done
 
-# ── Right: battery ────────────────────────────────────────
+# ── Battery ───────────────────────────────────────────────
 sketchybar --add item battery right \
   --set battery \
     update_freq=60 \
-    icon.drawing=off \
-    label.font="SF Pro:Semibold:12.0" \
-    padding_right=6 \
+    icon.font="$FONT:Regular:15.0" \
+    label.font="$FONT:Regular:12.0" \
+    padding_right=4 \
     script="$CONFIG_DIR/plugins/battery.sh"
 
-# ── Right: AirPods (hidden when disconnected) ─────────────
+# ── AirPods ───────────────────────────────────────────────
 sketchybar --add item airpods right \
   --set airpods \
     update_freq=30 \
     drawing=off \
-    icon.drawing=off \
+    icon.font="$FONT:Regular:14.0" \
+    label.font="$FONT:Regular:12.0" \
+    icon.color=$FG \
     label.color=$FG \
-    label.font="SF Pro:Regular:12.0" \
     script="$CONFIG_DIR/plugins/airpods.sh"
 
-# ── Right: clock ──────────────────────────────────────────
+# ── Clock ─────────────────────────────────────────────────
 sketchybar --add item clock right \
   --set clock \
     update_freq=30 \
     icon.drawing=off \
     label.color=$YELLOW \
-    label.font="SF Pro:Semibold:13.0" \
-    padding_left=8 \
+    label.font="$FONT:Bold:13.0" \
+    padding_left=6 \
     script="$CONFIG_DIR/plugins/clock.sh"
 
 sketchybar --update

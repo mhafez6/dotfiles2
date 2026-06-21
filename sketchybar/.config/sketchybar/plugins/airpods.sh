@@ -13,7 +13,7 @@ for s in sections:
 " 2>/dev/null)
 
 if [ -n "$BATTERY" ]; then
-    sketchybar --set airpods drawing=on label="🎧 $BATTERY"
+    sketchybar --set airpods drawing=on icon="󰋋" label=" $BATTERY"
 else
     sketchybar --set airpods drawing=off
 fi
