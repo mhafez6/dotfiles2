@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# ── Gruvbox Dark colors ───────────────────────────────────
+BG=0xff282828
+FG=0xffebdbb2
+YELLOW=0xffd79921
+YELLOW_DIM=0xff3c3836
+GRAY=0xff928374
+ACCENT_BG=0x443c3836
+
+sketchybar --bar \
+  height=36 \
+  color=$BG \
+  position=top \
+  shadow=off \
+  sticky=on \
+  padding_right=14 \
+  padding_left=14
+
+sketchybar --default \
+  icon.color=$FG \
+  label.color=$FG \
+  icon.font="SF Pro:Semibold:14.0" \
+  label.font="SF Pro:Regular:13.0" \
+  padding_left=4 \
+  padding_right=4 \
+  label.padding_left=4 \
+  label.padding_right=4 \
+  icon.padding_left=4 \
+  icon.padding_right=4
+
+# ── Spaces (left) ────────────────────────────────────────
+for i in $(seq 1 9); do
+  sketchybar --add space space.$i left \
+    --set space.$i \
+      associated_space=$i \
+      icon=$i \
+      icon.color=$GRAY \
+      icon.highlight_color=$YELLOW \
+      background.color=$ACCENT_BG \
+      background.corner_radius=4 \
+      background.height=24 \
+      background.drawing=on \
+      label.drawing=off \
+      click_script="yabai -m space --focus $i 2>/dev/null"
+done
+
+# ── Clock (right) ────────────────────────────────────────
+sketchybar --add item clock right \
+  --set clock \
+    update_freq=30 \
+    icon.drawing=off \
+    label.color=$YELLOW \
+    label.font="SF Pro:Semibold:13.0" \
+    script="$CONFIG_DIR/plugins/clock.sh"
+
+sketchybar --update
