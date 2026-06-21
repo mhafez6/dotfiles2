@@ -10,3 +10,10 @@ path = "~/.dotfiles/themes/tinted-ghostty"
 name = "tinted-ghostty"
 themes-dir = "themes"
 supported-systems = ["base16"]
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-sketchybar"
+name = "tinted-sketchybar"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "sketchybar --reload"

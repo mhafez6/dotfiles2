@@ -1,6 +1,7 @@
 #!/bin/bash
-BT=$(system_profiler SPBluetoothDataType 2>/dev/null)
+source "$HOME/.local/share/tinted-theming/tinty/tinted-sketchybar-themes-file.sh" 2>/dev/null
 
+BT=$(system_profiler SPBluetoothDataType 2>/dev/null)
 BATTERY=$(echo "$BT" | python3 -c "
 import sys, re
 data = sys.stdin.read()
@@ -13,7 +14,7 @@ for s in sections:
 " 2>/dev/null)
 
 if [ -n "$BATTERY" ]; then
-    sketchybar --set airpods drawing=on icon="󰋋" label=" $BATTERY"
+    sketchybar --set airpods drawing=on icon="󰋋" icon.color=$SBAR_FG label=" $BATTERY" label.color=$SBAR_FG
 else
     sketchybar --set airpods drawing=off
 fi
