@@ -16,4 +16,4 @@ path = "~/.dotfiles/themes/tinted-sketchybar"
 name = "tinted-sketchybar"
 themes-dir = "themes"
 supported-systems = ["base16"]
-hook = "sketchybar --reload"
+hook = "sketchybar --reload; $HOME/.config/sketchybar/plugins/set-wallpaper.sh"

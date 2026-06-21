@@ -16,4 +16,4 @@ else
     ICON="󰁺"; COLOR=$SBAR_RED
 fi
 
-sketchybar --set battery icon="$ICON" icon.color=$COLOR label="${PCT}%" label.color=$COLOR
+sketchybar --animate tanh 10 --set battery icon="$ICON" icon.color=$COLOR label="${PCT}%" label.color=$COLOR
