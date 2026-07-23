@@ -1,0 +1,15 @@
+themes {
+    "base16-active" {
+        fg 238 213 217
+        bg 36 27 38
+        black 47 42 63
+        red 135 123 182
+        green 201 101 191
+        yellow 168 74 115
+        blue 106 158 181
+        magenta 120 163 143
+        cyan 156 95 206
+        white 228 204 208
+        orange 222 91 68
+    }
+}

@@ -1,6 +1,9 @@
-config-file = /Users/h/.local/share/tinted-theming/tinty/tinted-ghostty-themes-file.conf
+# Tinty-generated palette (updated by `tinty apply`); reload with cmd+shift+,
+config-file = ?~/.local/share/tinted-theming/tinty/tinted-ghostty-themes-file.conf
 
-background-opacity = 0.85
-background-blur = true
-
+background-opacity = .20
+background-blur-radius = 12
+macos-titlebar-style = hidden
 keybind = opt+backspace=text:\x1b\x7f
+keybind = super+t=ignore
+shell-integration-features = ssh-terminfo

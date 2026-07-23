@@ -1,18 +1,19 @@
 format = "$directory$git_branch$git_status$character"
 add_newline = false
+palette = "catppuccin_mocha"
 
 [directory]
-style = "bold #d79921"
+style = "bold base0a"
 truncation_length = 3
 truncate_to_repo = false
 
 [git_branch]
 symbol = " "
-style = "bold #458588"
+style = "bold base0d"
 format = "[ $symbol$branch]($style) "
 
 [git_status]
-style = "#fb4934"
+style = "base08"
 format = "([$all_status$ahead_behind]($style) )"
 ahead = "⇡$count"
 behind = "⇣$count"
@@ -21,5 +22,23 @@ untracked = "?"
 staged = "+"
 
 [character]
-success_symbol = "[❯](#b8bb26)"
-error_symbol = "[❯](#fb4934)"
+success_symbol = "[❯](base0b)"
+error_symbol = "[❯](base08)"
+
+[palettes.catppuccin_mocha]
+base00 = "#1e1e2e"
+base01 = "#181825"
+base02 = "#313244"
+base03 = "#45475a"
+base04 = "#585b70"
+base05 = "#cdd6f4"
+base06 = "#f5e0dc"
+base07 = "#b4befe"
+base08 = "#f38ba8"
+base09 = "#fab387"
+base0a = "#f9e2af"
+base0b = "#a6e3a1"
+base0c = "#94e2d5"
+base0d = "#89b4fa"
+base0e = "#cba6f7"
+base0f = "#f2cdcd"

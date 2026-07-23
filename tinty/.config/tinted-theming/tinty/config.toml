@@ -16,4 +16,46 @@ path = "~/.dotfiles/themes/tinted-sketchybar"
 name = "tinted-sketchybar"
 themes-dir = "themes"
 supported-systems = ["base16"]
-hook = "sketchybar --reload; $HOME/.config/sketchybar/plugins/set-wallpaper.sh"
+hook = "if command -v sketchybar >/dev/null 2>&1; then sketchybar --reload; fi; pkill -x borders 2>/dev/null; (sleep 0.3 && \"$HOME/.config/borders/bordersrc\") >/dev/null 2>&1 &"
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-obsidian"
+name = "tinted-obsidian"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "mkdir -p \"$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Hafez/.obsidian/snippets\"; cp \"$TINTY_THEME_FILE_PATH\" \"$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Hafez/.obsidian/snippets/tinted.css\""
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-nvim"
+name = "tinted-nvim"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "cp \"$TINTY_THEME_FILE_PATH\" \"$HOME/.config/nvim/colors/base16-active.lua\""
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-zellij"
+name = "tinted-zellij"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "mkdir -p \"$HOME/.config/zellij/themes\"; cp \"$TINTY_THEME_FILE_PATH\" \"$HOME/.config/zellij/themes/base16-active.kdl\""
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-omp"
+name = "tinted-omp"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "cp \"$TINTY_THEME_FILE_PATH\" \"$HOME/.omp/agent/themes/base16-active.json\" && \"$HOME/.dotfiles/themes/tinted-omp/update-omp-config.sh\""
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-zen"
+name = "tinted-zen"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "cp \"$TINTY_THEME_FILE_PATH\" \"$HOME/Library/Application Support/zen/Profiles/lsvyz7r7.Default (release)/chrome/tinted-zen.css\""
+
+[[items]]
+path = "~/.dotfiles/themes/tinted-vscode"
+name = "tinted-vscode"
+themes-dir = "themes"
+supported-systems = ["base16"]
+hook = "\"$HOME/.dotfiles/themes/tinted-vscode/update-vscode-settings.sh\""

@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Caps Lock (Hold) -> Hyper (⇧⌃⌥), Caps Lock (Tap) -> Escape",
+                        "description": "Caps Lock (Hold) -> Hyper (⇧⌃⌥), Caps Lock (Tap) -> Sticky Control (~1s)",
                         "manipulators": [
                             {
                                 "from": {
@@ -14,10 +14,20 @@
                                 "to": [
                                     {
                                         "key_code": "left_shift",
-                                        "modifiers": ["left_control", "left_option"]
+                                        "modifiers": ["left_control", "left_option"],
+                                        "lazy": true
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "escape" }],
+                                "to_if_alone": [{ "sticky_modifier": { "left_control": "on" } }],
+                                "to_delayed_action": {
+                                    "to_if_invoked": [
+                                        { "sticky_modifier": { "left_control": "off" } }
+                                    ]
+                                },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 1200,
+                                    "basic.to_if_alone_timeout_milliseconds": 300
+                                },
                                 "type": "basic"
                             }
                         ]
