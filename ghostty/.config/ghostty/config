@@ -4,6 +4,10 @@ config-file = ?~/.local/share/tinted-theming/tinty/tinted-ghostty-themes-file.co
 background-opacity = .20
 background-blur-radius = 12
 macos-titlebar-style = hidden
+macos-option-as-alt = left
 keybind = opt+backspace=text:\x1b\x7f
 keybind = super+t=ignore
+# Preserve Ctrl+Option modifiers for Zellij pane resizing, even without Kitty keyboard protocol.
+keybind = ctrl+opt+h=csi:104;7u
+keybind = ctrl+opt+l=csi:108;7u
 shell-integration-features = ssh-terminfo

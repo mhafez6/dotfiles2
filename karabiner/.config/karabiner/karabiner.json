@@ -4,30 +4,14 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Caps Lock (Hold) -> Hyper (⇧⌃⌥), Caps Lock (Tap) -> Sticky Control (~1s)",
+                        "description": "Caps Lock -> Control",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": ["left_control", "left_option"],
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "sticky_modifier": { "left_control": "on" } }],
-                                "to_delayed_action": {
-                                    "to_if_invoked": [
-                                        { "sticky_modifier": { "left_control": "off" } }
-                                    ]
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 1200,
-                                    "basic.to_if_alone_timeout_milliseconds": 300
-                                },
+                                "to": [{ "key_code": "left_control" }],
                                 "type": "basic"
                             }
                         ]

@@ -1,0 +1,31 @@
+setupVersion: 1
+modelRoles:
+  advisor: cli-proxy-openai/gpt-5.6-sol:high
+  default: cli-proxy/claude-fable-5:high
+  plan: cli-proxy-openai/gpt-5.6-sol:xhigh
+  slow: cli-proxy-openai/gpt-5.6-sol:xhigh
+  smol: cli-proxy-openai/gpt-5.6-luna:medium
+  task: cli-proxy/claude-opus-5:medium
+tier:
+  advisor: inherit
+advisor:
+  enabled: true
+task:
+  agentModelOverrides:
+    designer: cli-proxy/claude-opus-5:medium
+    librarian: cli-proxy/claude-opus-5:medium
+    reviewer: cli-proxy/claude-opus-5:medium
+    scout: cli-proxy/claude-opus-5:medium
+    sonic: cli-proxy/claude-opus-5:medium
+    task: cli-proxy/claude-opus-5:medium
+retry:
+  fallbackChains:
+    default:
+      - cli-proxy/claude-opus-5
+      - cli-proxy-openai/gpt-5.6-sol
+  modelFallback: true
+defaultThinkingLevel: high
+theme:
+  dark: base16-active
+tools:
+  xdev: false

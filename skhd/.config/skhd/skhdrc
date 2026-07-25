@@ -7,10 +7,26 @@ shift + ctrl + alt - k : yabai -m window --focus north
 shift + ctrl + alt - l : yabai -m window --focus east
 
 # ── Resize ───────────────────────────────────────────────
-ctrl + alt - h : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
-ctrl + alt - j : yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:50
-ctrl + alt - k : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
-ctrl + alt - l : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0
+ctrl + alt - h [
+    "ghostty" ~
+    "Ghostty" ~
+    * : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
+]
+ctrl + alt - j [
+    "ghostty" ~
+    "Ghostty" ~
+    * : yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:50
+]
+ctrl + alt - k [
+    "ghostty" ~
+    "Ghostty" ~
+    * : yabai -m window --resize top:0:-50 || yabai -m window --resize bottom:0:-50
+]
+ctrl + alt - l [
+    "ghostty" ~
+    "Ghostty" ~
+    * : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0
+]
 
 # ── Move (swap, wraps at edges) ──────────────────────────
 ctrl + shift - h : yabai -m window --swap west  2>/dev/null || yabai -m window --swap east
@@ -38,17 +54,16 @@ cmd - n [
 shift + ctrl + alt - c : /Users/h/.config/skhd/scripts/focus-zen.sh
 shift + ctrl + alt - o : /Users/h/.config/skhd/scripts/open-obsidian-floating.sh
 
-# ── Switch to space (Hyper + 1-9) ────────────────────────
-shift + ctrl + alt - 1 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 1
-shift + ctrl + alt - 2 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 2
-shift + ctrl + alt - t : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 2
-shift + ctrl + alt - 3 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 3
-shift + ctrl + alt - 4 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 4
-shift + ctrl + alt - 5 : yabai -m space --focus 5
-shift + ctrl + alt - 6 : yabai -m space --focus 6
-shift + ctrl + alt - 7 : yabai -m space --focus 7
-shift + ctrl + alt - 8 : yabai -m space --focus 8
-shift + ctrl + alt - 9 : yabai -m space --focus 9
+# ── Switch to space (Control + 1-9) ──────────────────────
+ctrl - 1 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 1
+ctrl - 2 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 2
+ctrl - 3 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 3
+ctrl - 4 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
+ctrl - 6 : yabai -m space --focus 6
+ctrl - 7 : yabai -m space --focus 7
+ctrl - 8 : yabai -m space --focus 8
+ctrl - 9 : yabai -m space --focus 9
 
 # ── Move window to space (Hyper + Cmd + 1-9) ─────────────
 shift + ctrl + alt + cmd - 1 : /Users/h/.config/yabai/scripts/ensure-spaces.sh 4; yabai -m window --space 1

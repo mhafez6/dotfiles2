@@ -1,3 +1,36 @@
 theme "base16-active"
 
 show_startup_tips false
+// Zellij 0.44+ paints panes opaque; ~/.local/bin/zellij is pinned to 0.43.1 until #5175 is fixed.
+// Keep pane backgrounds transparent while framing the focused pane in the theme's bright accent.
+pane_frames true
+
+default_layout "tab-stack"
+
+keybinds {
+    // Ctrl-g normally enters Locked mode, which disables Zellij shortcuts.
+    // Keep it available to the active pane instead.
+    unbind "Ctrl g"
+    // Use j/k for tabs and h/l for side-by-side panes.
+    shared_except "locked" "entersearch" "renametab" "renamepane" {
+        bind "Ctrl h" { MoveFocus "Left"; }
+        bind "Ctrl l" { MoveFocus "Right"; }
+        bind "Ctrl j" { GoToNextTab; }
+        bind "Ctrl k" { GoToPreviousTab; }
+
+        bind "Ctrl Alt h" { Resize "Increase Left"; }
+        bind "Ctrl Alt j" { Resize "Increase Down"; }
+        bind "Ctrl Alt k" { Resize "Increase Up"; }
+        bind "Ctrl Alt l" { Resize "Increase Right"; }
+
+        // Ghostty sends Option-Right as Alt-f for shell word movement.
+        bind "Alt f" { Write 27 102; }
+    }
+
+    // Ctrl-h used to enter Move mode; keep that ability on Alt-m.
+    shared_except "locked" "move" {
+        bind "Alt m" { SwitchToMode "Move"; }
+    }
+
+    // Ctrl-p opens Pane mode for up/down focus; Ctrl-g is left for applications.
+}
