@@ -1,30 +1,24 @@
 #!/usr/bin/env sh
 
-# scripting addition (needed for moving windows between spaces)
+# Load the scripting addition when yabai starts and after Dock restarts.
 yabai -m signal --add event=dock_did_restart action="sudo -n yabai --load-sa >/dev/null 2>&1"
 sudo -n yabai --load-sa >/dev/null 2>&1
 
-# tiling layout
 yabai -m config layout bsp
-
-# ensure Hyper+1..4 always have spaces to target
 /Users/h/.config/yabai/scripts/ensure-spaces.sh 4
 
-# gaps
 yabai -m config top_padding    4
 yabai -m config bottom_padding 10
 yabai -m config left_padding   10
 yabai -m config right_padding  10
 yabai -m config window_gap     10
 
-# mouse
 yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
 yabai -m config mouse_modifier      fn
 yabai -m config mouse_action1       move
 yabai -m config mouse_action2       resize
 
-# don't tile these
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Finder$"          manage=off
 yabai -m rule --add app="^Raycast$"         manage=off
