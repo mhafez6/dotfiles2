@@ -19,7 +19,7 @@
                                     "key_code": "caps_lock",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "left_control" }],
+                                "to": [{ "key_code": "left_control", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "caps_lock" }],
                                 "type": "basic"
                             },
@@ -39,7 +39,8 @@
                                 "to": [
                                     {
                                         "key_code": "left_control",
-                                        "modifiers": ["left_shift", "left_option"]
+                                        "modifiers": ["left_shift", "left_option"],
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [{ "key_code": "caps_lock" }],
